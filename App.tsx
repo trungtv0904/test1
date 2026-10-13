@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { Button, StyleSheet, Text, View, ScrollView, FlatList } from 'react-native';
+import { Color } from 'react-native/types_generated/Libraries/Animated/AnimatedExports';
 // import { ScrollView } from 'react-native/types_generated/index';
 
 export default function App() {
@@ -45,10 +46,14 @@ export default function App() {
           )
         })}
       </ScrollView> */}
-      <FlatList
-        data={todoList}
-        renderItem={({ item }) => <Item title={item.title} />}
-      />
+      <View style={{ Color: 'red', padding: 20, backgroundColor: 'blue', margin: 0 }}>
+        <FlatList
+          data={todoList}
+          renderItem={({ item }) => <Item title={item.title} />}
+          keyExtractor={item => item.id + ''}
+        />
+      </View>
+
     </View >
   );
 }
@@ -58,7 +63,8 @@ const styles = StyleSheet.create({
     fontSize: 30,
     backgroundColor: 'pink',
     marginBottom: 10,
-    paddingTop: 50
+    // paddingTop: 50
+    padding: 30
   }
   ,
   text: {
